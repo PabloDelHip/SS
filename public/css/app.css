@@ -11007,3 +11007,11 @@ div.contenedor-case-history {
   overflow: auto;
 }
 
+.user-panel .form-inline {
+  display: none !important;
+}
+
+.form-inline {
+  display: none !important;
+}
+

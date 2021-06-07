@@ -6,7 +6,7 @@
             <img src="/img/Logotipo.png" alt="Logo Caribbean Hollidays">
             </div>
             <div class="card-body">
-            <p class="login-box-msg">Regístrese para iniciar su sesión</p>
+            <p class="login-box-msg">Iniciar sesión</p>
             <transition name="fade">
                 <div class="alert alert-danger text-center" v-if="show_error">
                     {{ message }}
@@ -53,11 +53,11 @@
                 </form>
             </ValidationObserver>
         
-            <p class="mb-1 text-center mt-2">
+            <!--<p class="mb-1 text-center mt-2">
                 <router-link :to="{ name:'RestablecerContrasena'}">
                     Recuperar contraseña
                 </router-link>
-            </p>
+            </p> -->
             </div>
             <!-- /.card-body -->
         </div>

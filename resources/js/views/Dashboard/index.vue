@@ -180,27 +180,10 @@
                       with font-awesome or any other icon font library -->
                   <!-- <li class="nav-header">EXAMPLES</li> -->
                   <li class="nav-item">
-                    <a href="pages/calendar.html" class="nav-link">
-                      <i class="fas fa-hand-holding-usd"></i>
-                      <p>
-                        Oportunidades de venta
-                        <span class="badge badge-danger right">2</span>
-                      </p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <router-link class="nav-link" :to="{ name:'ListUser'}">
-                      <i class="fas fa-users"></i>
-                      <p>
-                        Usuarios
-                      </p>
-                    </router-link>
-                  </li>
-                  <li class="nav-item">
                     <a href="#" class="nav-link">
-                      <i class="fas fa-shopping-cart"></i>
+                      <i class="fas fa-list"></i>
                       <p>
-                        Productos
+                        Catalogos
                         <i class="fas fa-angle-left right"></i>
                       </p>
                     </a>
@@ -208,68 +191,151 @@
                       <li class="nav-item">
                         <a href="pages/mailbox/mailbox.html" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
+                          <p>Hoteles</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Guías</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Autobuses</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Destinos</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Alimentos</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Agencias</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
                           <p>Tours</p>
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a href="pages/mailbox/compose.html" class="nav-link">
+                        <a href="pages/mailbox/mailbox.html" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
-                          <p>Catamaranes</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="pages/mailbox/read-mail.html" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Autos</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="pages/mailbox/read-mail.html" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Vuelos</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="pages/mailbox/read-mail.html" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Hoteles</p>
+                          <p>Sucursal</p>
                         </a>
                       </li>
                     </ul>
                   </li>
                   <li class="nav-item">
-                    <router-link class="nav-link" :to="{ name:'Contacts'}">
-                      <i class="fas fa-address-card"></i>
+                    <a href="#" class="nav-link">
+                      <i class="fas fa-calculator"></i>
                       <p>
-                        Contactos
-                      </p>
-                    </router-link>
-                  </li>
-                  <li class="nav-item" v-if="user.vendor_id == null">
-                     <router-link class="nav-link" :to="{ name:'ListVendor'}">
-                        <i class="fas fa-store"></i>
-                        <p>
-                          Agencias
-                        </p>
-                     </router-link>
-                  </li>
-                  <li class="nav-item" v-else>
-                     <router-link class="nav-link" :to="{ 
-                        name: 'profileVendor',
-                        params: { id: user.vendor_id },}">
-                        <i class="fas fa-store"></i>
-                        <p>
-                          Agencia
-                        </p>
-                     </router-link>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/gallery.html" class="nav-link">
-                      <i class="fas fa-file-alt"></i>
-                      <p>
-                        Documentos
+                        Operaciones
+                        <i class="fas fa-angle-left right"></i>
                       </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Asignación</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="pages/mailbox/compose.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Edición de corridas</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="pages/mailbox/read-mail.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Asignación de reservas</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="fas fa-clock"></i>
+                      <p>
+                        Reservaciones
+                        <i class="fas fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Reservacion</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Busqueda reservación</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Ver corridas</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="fas fa-chart-pie"></i>
+                      <p>
+                        Reportes
+                        <i class="fas fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Pickup</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Corridas</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Reservas por agencias</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Reservas por dia</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Totales diarios</p>
+                        </a>
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </nav>

@@ -68,3 +68,13 @@ div.contenedor-case-history {
     height: 500px;
     overflow: auto;
 }
+
+.user-panel {
+    .form-inline {
+        display: none !important;
+    }
+}
+
+.form-inline {
+    display: none !important;
+}

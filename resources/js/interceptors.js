@@ -13,7 +13,7 @@ axios.interceptors.request.use((req) => {
     return req;
 });
 
-const responseStatuses = (err) => {
+/*const responseStatuses = (err) => {
     if (
         err.response.status === 401 &&
         err.response.config.url != "/api/v1/auth/login"
@@ -33,4 +33,4 @@ axios.interceptors.response.use(
     (err) => {
         return responseStatuses(err);
     }
-);
+); */

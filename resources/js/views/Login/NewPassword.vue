@@ -59,11 +59,11 @@
             Parece que hizo clic en un enlace de restablecimiento de contraseña
             no válido. Inténtalo de nuevo.
           </p>
-          <p class="mt-3 mb-1">
+          <!--<p class="mt-3 mb-1">
             <router-link :to="{ name: 'RestablecerContrasena' }">
               Recuperar contraseña
             </router-link>
-          </p>
+          </p>-->
         </div>
       </div>
       <!-- /.login-card-body -->

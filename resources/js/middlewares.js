@@ -24,7 +24,7 @@ async function existToken() {
     return validate_jwt;
 }
 
-router.beforeEach(async(to, from, next) => {
+/*router.beforeEach(async(to, from, next) => {
     let jwt = await existToken();
     let url = to.path.split("/");
     url = "/" + url[1];
@@ -132,7 +132,7 @@ async function hasAccess(to) {
             return true;
     }
     return true;
-}
+} */
 
 async function getPermissionModule(name) {
     var user = JSON.parse(await getUser()).user;
