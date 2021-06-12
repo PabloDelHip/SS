@@ -43,11 +43,28 @@ import VendorsContactsView from './views/vendors/Contacts/contactsview.vue'
 //Case section
 import CasesHistory from './views/Cases/timeLineView.vue'
 
+//////////SS//////////
+
+//Reservaciones
+import ReservacionesAlta from './views/Reservaciones/AltaView.vue'
+
+
 export default new Router({
     linkExactActiveClass: "active",
     routes: [{
             path: "*",
             redirect: { name: "Overview" },
+        },
+        {
+            path: "/reservaciones",
+            name: "Reservaciones",
+            component: Index,
+            children: [{
+                    path: "alta",
+                    name: "ReservacionesAlta",
+                    component: ReservacionesAlta,
+                }
+            ],
         },
         {
             path: "/login",
