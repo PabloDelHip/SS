@@ -47,6 +47,7 @@ import CasesHistory from './views/Cases/timeLineView.vue'
 
 //Reservaciones
 import ReservacionesAlta from './views/Reservaciones/AltaView.vue'
+import ReservacionesLista from './views/Reservaciones/ListaView.vue'
 
 
 export default new Router({
@@ -59,10 +60,16 @@ export default new Router({
             path: "/reservaciones",
             name: "Reservaciones",
             component: Index,
-            children: [{
+            children: [
+                {
                     path: "alta",
                     name: "ReservacionesAlta",
                     component: ReservacionesAlta,
+                },
+                {
+                    path: "lista",
+                    name: "ReservacionesLista",
+                    component: ReservacionesLista,
                 }
             ],
         },

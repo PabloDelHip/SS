@@ -1,27 +1,5 @@
 <template>
   <div>
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Reservaciones</h1>
-            <button :disabled="invalid" type="submit" class="btn btn-info btn-sm mt-2">
-                <i class="fas fa-arrow-left"></i>
-                Volver
-            </button>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Reservaciones</li>
-              <li class="breadcrumb-item active">Alta</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -272,8 +250,36 @@ export default {
 
       user: null,
       form: {
-          name: ''
+          hotel: '',
+          hotel_name: '',
+          tour: '',
+          tour_name: '',
+          precio_adulto: '',
+          precio_nino: '',
+          nombre: '',
+          pax: '',
+          cuarto: '',
+          agencia: '',
+          agencia_name: '',
+          sucursal: '',
+          sucursal_name: '',
+          vendedor: '',
+          alta: '',
+          fecha_alta: '',
+          modifico: '',
+          fecha_modifico: '',
+          fecha_tour: '',
+          cupon: '',
+          observaciones: '',
+          cortesia: '',
+          convertidor: '',
+          tipo_cliente: ''
       },
+      hotelList: [],
+      tourList: [],
+      agenciaList: [],
+      sucursalList:[],
+      vendedorList:[],
       options: ['list', 'of', 'options']
     }
   },
