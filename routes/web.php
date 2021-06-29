@@ -22,6 +22,7 @@ Route::get('/nueva-contrasena/{token?}', ['as' => '/nueva-contrasena', 'uses' =>
 
 //Reservaciones//
 Route::get('/reservaciones/alta', ['as' => '/reservaciones/alta', 'uses' => 'HomeController@index']);
+Route::get('/reservaciones/lista', ['as' => '/reservaciones/lista', 'uses' => 'HomeController@index']);
 
 // Customers
 Route::get('/contacts', ['as' => 'contacts', 'uses' => 'HomeController@index']);

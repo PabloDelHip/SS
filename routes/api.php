@@ -18,6 +18,14 @@ use Illuminate\Support\Facades\Route;
     return $request->user();
 }); */
 
+//Reservaciones
+Route::group([
+    //'middleware' => ['jwt.auth'],
+    'prefix' => 'v1/reservas'
+], function () {
+    Route::get('/save', 'ReservacionesController@store');
+});
+
 Route::group([
     'middleware' => ['jwt.auth'],
     'prefix' => 'v1/users'
