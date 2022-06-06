@@ -23,7 +23,10 @@ Route::group([
     //'middleware' => ['jwt.auth'],
     'prefix' => 'v1/reservas'
 ], function () {
-    Route::get('/save', 'ReservacionesController@store');
+    Route::post('/', 'ReservacionesController@store');
+    Route::put('/put/{clave}', 'ReservacionesController@update');
+    Route::get('/{fecha}', 'ReservacionesController@find');
+    Route::get('/info/{id}', 'ReservacionesController@findReserva');
 });
 
 Route::group([
@@ -87,6 +90,16 @@ Route::group([
     Route::get('get/{id_customer}', 'CustomerController@getCustomer');
     Route::delete('delete/{id_customer}', 'CustomerController@deleteCustomer');
 });
+
+//Corridas
+Route::group([
+    'middleware' => ['jwt.auth'],
+    'prefix' => 'v1/corridas/'
+], function () {
+    
+    Route::post('/find/date', 'CorridasController@getCorridas');
+});
+
 
 //Cases
 Route::group([
@@ -178,4 +191,31 @@ Route::group([
     Route::get('/get/{id}', 'VendorsController@getVendor');
     Route::post('/create', 'VendorsController@post');
     Route::delete('/delete/{id}', 'VendorsController@delete');
+});
+
+// Hoteles
+Route::group([
+    'middleware' => ['jwt.auth'],
+    'prefix' => 'v1/hotels'
+], function () {
+    Route::get('/get', 'HotelsController@get');
+    Route::get('/find/{clave}', 'HotelsController@find');
+});
+
+// Tours
+Route::group([
+    'middleware' => ['jwt.auth'],
+    'prefix' => 'v1/tours'
+], function () {
+    Route::get('/get', 'ToursController@get');
+    Route::get('/find/{clave}', 'ToursController@find');
+});
+
+// Clientes
+Route::group([
+    'middleware' => ['jwt.auth'],
+    'prefix' => 'v1/clientes'
+], function () {
+    Route::get('/get', 'ClientesController@get');
+    Route::get('/find/{clave}', 'ClientesController@find');
 });

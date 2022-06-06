@@ -3,7 +3,7 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-            <img src="/img/Logotipo.png" alt="Logo Caribbean Hollidays">
+            <!--<img src="/img/Logotipo.png" alt="Logo Caribbean Hollidays"> -->
             </div>
             <div class="card-body">
             <p class="login-box-msg">Iniciar sesión</p>
@@ -14,9 +14,9 @@
             </transition>
             <ValidationObserver v-slot="{validate }" ref="observer">
                 <form method="post">
-                    <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
+                    <ValidationProvider name="email" rules="required" v-slot="{ errors }">
                     <div class="input-group mb-3">
-                        <input v-model="email" type="email" class="form-control" placeholder="Email">
+                        <input v-model="email" type="text" class="form-control" placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                             <span class="fas fa-envelope"></span>

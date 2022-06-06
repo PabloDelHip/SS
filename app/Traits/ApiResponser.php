@@ -12,11 +12,16 @@ trait ApiResponser
         return response()->json(['error' => $message, 'code' => $code], $code); 
     }
 
-    protected function showAll(array $collection, $code = 200) {
+    protected function showAll($collection, $code = 200) {
         return $this->successResponse(['data' => $collection], $code);
     }
 
     protected function showOne(Model $instance, $code = 200) {
         return $this->successResponse(['data' => $instance], $code);
+    }
+
+    protected function dateSql($date) {
+        $fecha = explode("-", $date);
+        return $fecha[0].'-'.$fecha[2].'-'.$fecha[1];
     }
 }

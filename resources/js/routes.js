@@ -49,12 +49,14 @@ import CasesHistory from './views/Cases/timeLineView.vue'
 import ReservacionesAlta from './views/Reservaciones/AltaView.vue'
 import ReservacionesLista from './views/Reservaciones/ListaView.vue'
 
+//Reportes
+import Corridas from './views/Reportes/Corridas/index.vue'
 
 export default new Router({
     linkExactActiveClass: "active",
     routes: [{
             path: "*",
-            redirect: { name: "Overview" },
+            redirect: { name: "ReservacionesAlta" },
         },
         {
             path: "/reservaciones",
@@ -67,10 +69,28 @@ export default new Router({
                     component: ReservacionesAlta,
                 },
                 {
+                    path: "editar/:id",
+                    name: "ReservacionesEditar",
+                    component: ReservacionesAlta,
+                    props: true
+                },
+                {
                     path: "lista",
                     name: "ReservacionesLista",
                     component: ReservacionesLista,
                 }
+            ],
+        },
+        {
+            path: "/reportes",
+            name: "Reportes",
+            component: Index,
+            children: [
+                {
+                    path: "corridas",
+                    name: "ReportesCorridas",
+                    component: Corridas,
+                },
             ],
         },
         {
@@ -220,11 +240,11 @@ export default new Router({
                 }
             ]
         },
-        {
+        /*{
             path: "/overview",
             name: "Overview",
             component: Overview,
-        },
+        },*/
     ],
     mode: "history",
 });

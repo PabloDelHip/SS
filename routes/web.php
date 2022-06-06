@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', ['as' => '/', 'uses' => 'HomeController@index']);
-
+//Route::get('/pdf', ['as' => '/pdf', 'uses' => 'HomeController@pdf']);
+Route::get('/pdf/corridas/{date}/{nacionalidad}', ['as' => '/pdf/corridas/{date}/{nacionalidad}', 'uses' => 'HomeController@pdfCorridas']);
 ///Login///
 Route::get('/login', ['as' => 'login', 'uses' => 'LoginController@index']);
 Route::get('/restablecer-contrasena', ['as' => 'restablecer-contrasena', 'uses' => 'LoginController@index']);
@@ -22,6 +23,7 @@ Route::get('/nueva-contrasena/{token?}', ['as' => '/nueva-contrasena', 'uses' =>
 
 //Reservaciones//
 Route::get('/reservaciones/alta', ['as' => '/reservaciones/alta', 'uses' => 'HomeController@index']);
+Route::get('/reservaciones/editar/{id}', ['as' => '/reservaciones/alta', 'uses' => 'HomeController@index']);
 Route::get('/reservaciones/lista', ['as' => '/reservaciones/lista', 'uses' => 'HomeController@index']);
 
 // Customers
@@ -53,6 +55,9 @@ Route::get('/vendors/contacts/{id}', ['as' => 'vendors/contacts', 'uses' => 'Hom
 Route::get('/vendors/contacts/{id}/create', ['as' => 'vendors/contacts/create', 'uses' => 'HomeController@index']);
 Route::get('/vendors/contacts/{id}/edit/{contactId}', ['as' => 'vendors/contacts/edit', 'uses' => 'HomeController@index']);
 Route::get('vendors/profile/{id}', ['as' => 'profile', 'uses' => 'HomeController@index']);
+
+//Reportes
+Route::get('/reportes/corridas', ['as' => 'vendors', 'uses' => 'HomeController@index']);
 
 //Cases
 Route::get('/cases/history/{id_case}', ['as' => 'vendors', 'uses' => 'HomeController@index']);

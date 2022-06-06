@@ -9,24 +9,32 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Subir reservacion</h3>
+                <h3 class="card-title">Reservacion</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <ValidationObserver v-slot="{ invalid, validate }" ref="observer">
+              <ValidationObserver v-slot="{ invalid }" ref="observer">
                 <div class="card-body row">
                     <div class="col-6 row">
                         <div class="form-group col-3">
                             <label>* Hotel:</label>
-                            <ValidationProvider rules="required" name="nombre" v-slot="{ errors }">
-                                <input type="text" v-model="form.name" class="form-control rounded-0" placeholder="000">
+                            <ValidationProvider rules="required" name="hotel" v-slot="{ errors }">
+                                <input type="text" readonly v-model="form.hotel" @change="selectHotel" class="form-control rounded-0" placeholder="000">
                                 <span :class="['error', 'invalid-feedback', errors[0] ? 'ver' : '']">{{ errors[0] }}</span>
                             </ValidationProvider>
                         </div>
                         <div class="form-group col-9">
                             <label>---</label>
                             <ValidationProvider rules="required" name="nombre" v-slot="{ errors }">
-                                <multiselect  v-model="value" :options="options"></multiselect>
+                                <multiselect
+                  v-model="hotel"
+                  label="nombre"
+                  track-by="clave"
+                  :options="hotelList"
+                  :searchable="true"
+                  :show-labels="false"
+                  placeholder="Seleccionar una ciudad">
+                </multiselect>
                                 <span :class="['error', 'invalid-feedback', errors[0] ? 'ver' : '']">{{ errors[0] }}</span>
                             </ValidationProvider>
                         </div>
@@ -34,45 +42,53 @@
                         <div class="form-group col-3">
                             <label>* Tours:</label>
                             <ValidationProvider rules="required" name="nombre" v-slot="{ errors }">
-                                <input type="text" v-model="form.name" class="form-control rounded-0" placeholder="000">
+                                <input type="text" readonly v-model="form.tour" class="form-control rounded-0" placeholder="000">
                                 <span :class="['error', 'invalid-feedback', errors[0] ? 'ver' : '']">{{ errors[0] }}</span>
                             </ValidationProvider>
                         </div>
                         <div class="form-group col-9">
                             <label>---</label>
                             <ValidationProvider rules="required" name="nombre" v-slot="{ errors }">
-                                <multiselect  v-model="value" :options="options"></multiselect>
+                                <multiselect
+                  v-model="tour"
+                  label="nombretour"
+                  track-by="clave"
+                  :options="tourList"
+                  :searchable="true"
+                  :show-labels="false"
+                  placeholder="Seleccionar una ciudad">
+                </multiselect>
                                 <span :class="['error', 'invalid-feedback', errors[0] ? 'ver' : '']">{{ errors[0] }}</span>
                             </ValidationProvider>
                         </div>
 
                         <div class="form-group col-4">
                             <label for="exampleInputPassword1">Precio Adulto</label>
-                            <input type="password" class="form-control rounded-0" id="exampleInputPassword1" placeholder="Password">
+                            <input type="text" readonly v-model="form.precio_adulto" class="form-control rounded-0" id="exampleInputPassword1" placeholder="00.00">
                         </div>
                         <div class="form-group col-4">
                             <label for="exampleInputPassword1">Precio Niño</label>
-                            <input type="password" class="form-control rounded-0" id="exampleInputPassword1" placeholder="Password">
+                            <input type="text" readonly v-model="form.precio_nino" class="form-control rounded-0" id="exampleInputPassword1" placeholder="00.00">
                         </div>
 
                         <div class="form-group col-12">
                             <label>* Nombre:</label>
                             <ValidationProvider rules="required" name="nombre" v-slot="{ errors }">
-                                <input type="text" v-model="form.name" class="form-control rounded-0" placeholder="000">
+                                <input type="text" v-model="form.nombre" class="form-control rounded-0" placeholder="000">
                                 <span :class="['error', 'invalid-feedback', errors[0] ? 'ver' : '']">{{ errors[0] }}</span>
                             </ValidationProvider>
                         </div>
                         <div class="form-group col-4">
                             <label>* Pax:</label>
-                            <ValidationProvider rules="required" name="nombre" v-slot="{ errors }">
-                                <input type="text" v-model="form.name" class="form-control rounded-0" placeholder="000">
+                            <ValidationProvider rules="required" name="pax" v-slot="{ errors }">
+                                <input type="text" v-model="form.pax" class="form-control rounded-0" placeholder="000">
                                 <span :class="['error', 'invalid-feedback', errors[0] ? 'ver' : '']">{{ errors[0] }}</span>
                             </ValidationProvider>
                         </div>
                         <div class="form-group col-4">
                             <label>* Cuarto:</label>
-                            <ValidationProvider rules="required" name="nombre" v-slot="{ errors }">
-                                <input type="text" v-model="form.name" class="form-control rounded-0" placeholder="000">
+                            <ValidationProvider rules="required" name="cuarto" v-slot="{ errors }">
+                                <input type="text" v-model="form.cuarto" class="form-control rounded-0" placeholder="Cuarto">
                                 <span :class="['error', 'invalid-feedback', errors[0] ? 'ver' : '']">{{ errors[0] }}</span>
                             </ValidationProvider>
                         </div>
@@ -81,40 +97,44 @@
 
                         <div class="form-group col-3">
                             <label>* Agencia:</label>
-                            <ValidationProvider rules="required" name="nombre" v-slot="{ errors }">
-                                <input type="text" v-model="form.name" class="form-control rounded-0" placeholder="000">
+                            <ValidationProvider rules="required" name="agencia" v-slot="{ errors }">
+                                <input type="text" readonly v-model="form.agencia" class="form-control rounded-0" placeholder="000">
                                 <span :class="['error', 'invalid-feedback', errors[0] ? 'ver' : '']">{{ errors[0] }}</span>
                             </ValidationProvider>
                         </div>
                         <div class="form-group col-9">
                             <label>---</label>
-                            <ValidationProvider rules="required" name="nombre" v-slot="{ errors }">
-                                <multiselect  v-model="value" :options="options"></multiselect>
+                            <ValidationProvider rules="required" name="agencia" v-slot="{ errors }">
+                               <multiselect
+                  v-model="agencia"
+                  label="nombre"
+                  track-by="clave"
+                  :options="agenciasList"
+                  :searchable="true"
+                  :show-labels="false"
+                  placeholder="Seleccionar una ciudad">
+                </multiselect>
                                 <span :class="['error', 'invalid-feedback', errors[0] ? 'ver' : '']">{{ errors[0] }}</span>
                             </ValidationProvider>
                         </div>
 
                         <div class="form-group col-3">
                             <label>* Sucursal:</label>
-                            <ValidationProvider rules="required" name="nombre" v-slot="{ errors }">
                                 <input type="text" v-model="form.name" class="form-control rounded-0" placeholder="000">
-                                <span :class="['error', 'invalid-feedback', errors[0] ? 'ver' : '']">{{ errors[0] }}</span>
-                            </ValidationProvider>
+                                
+                            
                         </div>
                         <div class="form-group col-9">
                             <label>---</label>
-                            <ValidationProvider rules="required" name="nombre" v-slot="{ errors }">
-                                <multiselect  v-model="value" :options="options"></multiselect>
-                                <span :class="['error', 'invalid-feedback', errors[0] ? 'ver' : '']">{{ errors[0] }}</span>
-                            </ValidationProvider>
+                            
+                                <multiselect  :options="options"></multiselect>
+                               
+                            
                         </div>
 
                         <div class="form-group col-9">
                             <label>Vendedor</label>
-                            <ValidationProvider rules="required" name="nombre" v-slot="{ errors }">
-                                <multiselect  v-model="value" :options="options"></multiselect>
-                                <span :class="['error', 'invalid-feedback', errors[0] ? 'ver' : '']">{{ errors[0] }}</span>
-                            </ValidationProvider>
+                                 <input type="text" readonly v-model="form.vendedor" class="form-control rounded-0" id="exampleInputPassword1" placeholder="Jhon Dave">
                         </div>
                     </div>
                     <!--Primera mitad -->
@@ -123,60 +143,60 @@
                         <div class="col-12 row alta-modifico p-3 mb-3">
                             <div class="form-group col-6">
                                 <label>Alta:</label>
-                                <input type="password" class="form-control rounded-0" id="exampleInputPassword1" placeholder="Jhon Dave">
+                                <input type="text" readonly :value="usuario" class="form-control rounded-0" id="exampleInputPassword1" placeholder="Jhon Dave">
                             </div>
                             <div class="form-group col-6">
                                 <label>---</label>
-                                <datetime class="rounded-0" v-model="form.birth_date" value-zone="local" zone="local"></datetime>
+                                <input type="text" v-model="form.fecha_alta" class="form-control rounded-0" readonly>
                             </div>
 
                             <div class="form-group col-6">
                                 <label>Modifico:</label>
-                                <input type="password" class="form-control rounded-0" id="exampleInputPassword1" placeholder="Jhon Dave">
+                                <input type="text" readonly :value="usuario" class="form-control rounded-0" id="exampleInputPassword1" placeholder="Jhon Dave">
                             </div>
                             <div class="form-group col-6">
                                 <label>---</label>
-                                <datetime v-model="form.birth_date" value-zone="local" zone="local"></datetime>
+                                <input type="text" class="form-control rounded-0" :value="new Date().toLocaleString()" readonly>
                             </div>
 
                             <div class="form-group col-7">
                                 <label>Fecha Tour:</label>
-                                <datetime v-model="form.birth_date" value-zone="local" zone="local"></datetime>
+                                <datetime v-model="form.fecha_tour" value-zone="local" zone="local"></datetime>
                             </div>
                             <div class="form-group col-7">
                                 <label>Cupon:</label>
-                                <input type="password" class="form-control rounded-0" id="exampleInputPassword1" placeholder="Jhon Dave">
+                                <input type="text" v-model="form.cupon" class="form-control rounded-0" id="exampleInputPassword1" placeholder="Jhon Dave">
                             </div>
 
                             <div class="form-group col-12">
                                 <label>Observaciones:</label>
-                                <textarea class="form-control rounded-0" rows="3" placeholder="Enter ..."></textarea>
+                                <textarea class="form-control rounded-0" v-model="form.observacion" rows="3" placeholder="Enter ..."></textarea>
                             </div>
                             <div class="custom-checkbox col-12 row pl-4">
                                 <div class="col-3">
-                                    <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-                                    <label for="customCheckbox1" class="custom-control-label">Cortesia</label>
+                                    <input type="checkbox" id="checkbox" v-model="form.cortesia">
+                                    <label>Cortesia</label>
                                 </div>
 
-                                <div class="col-3">
-                                    <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-                                    <label for="customCheckbox1" class="custom-control-label">Convertidor</label>
+                                <div class="col-4">
+                                    <input type="checkbox" id="checkbox" v-model="form.convertidor">
+                                    <label>Convertidor</label>
                                 </div>
                             </div>
                             <div class="custom-radio col-12 row pl-4 mt-3">
                                 <div class="col-3">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked="">
-                                    <label for="customRadio2" class="custom-control-label">Nacional</label>
+                                    <input type="radio" value="nacional" v-model="form.nacionalidad_reserva">
+                                    <label >Nacional</label>
                                 </div>
 
                                  <div class="col-3">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked="">
-                                    <label for="customRadio2" class="custom-control-label">Extranjero</label>
+                                    <input type="radio" value="extranjero" v-model="form.nacionalidad_reserva">
+                                    <label >Extranjero</label>
                                 </div>
 
                                 <div class="col-3">
-                                    <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio" checked="">
-                                    <label for="customRadio2" class="custom-control-label">Local</label>
+                                   <input type="radio" value="local" v-model="form.nacionalidad_reserva">
+                                    <label >Local</label>
                                 </div>
                             </div>
 
@@ -185,8 +205,11 @@
                 </div>
                 <!-- /.card-body -->
 
-                <div class="card-footer">
-                  <button :disabled="invalid" type="submit" class="btn btn-primary">Guardar</button>
+                <div v-if="id" class="card-footer">
+                  <button  @click="editar()" type="submit" class="btn btn-primary">Editar</button>
+                </div>
+                <div v-else class="card-footer">
+                  <button :disabled="invalid" @click="createReserva" type="submit" class="btn btn-primary">Guardar</button>
                 </div>
               </ValidationObserver>
             </div>
@@ -202,11 +225,17 @@
 </template>
 
 <script>
-import User from "../../providers/User";
+import Hoteles from "../../providers/Hoteles";
+import Clientes from "../../providers/Clientes";
+import Tours from "../../providers/Tours";
+import Reservas from "../../providers/Reservas";
 import { Datetime } from 'vue-datetime';
 import { ValidationProvider, ValidationObserver } from 'vee-validate/dist/vee-validate.full';
 
-const UserResource = new User();
+const HotelesResource = new Hoteles();
+const ClientesResource = new Clientes();
+const ToursResource = new Tours();
+const ReservasResource = new Reservas();
 
 export default {
     components: {
@@ -214,28 +243,11 @@ export default {
         ValidationObserver,
         ValidationProvider
     },
-    props: {
-        id: {
-            type: Number,
-            required: false,
-        },
-        contactId: {
-            type: Number,
-            required: false,
-        },
-        profileId: {
-            type: Number,
-            required: false,
-        },
-        externalEmail: {
-            type: String,
-            required: false,
-        },
-        vendorId: {
-            type: Number,
-            required: false,
-        },
-    },
+  props: {
+    id: {
+      default: 0
+    }
+  },
   data(){
     return {
       userErrors: [],
@@ -249,38 +261,47 @@ export default {
       statusUser: 1,
 
       user: null,
+      hotel: [],
+      tour: [],
+      agencia: [],
       form: {
           hotel: '',
-          hotel_name: '',
           tour: '',
-          tour_name: '',
           precio_adulto: '',
           precio_nino: '',
           nombre: '',
           pax: '',
           cuarto: '',
           agencia: '',
-          agencia_name: '',
           sucursal: '',
-          sucursal_name: '',
           vendedor: '',
-          alta: '',
-          fecha_alta: '',
-          modifico: '',
-          fecha_modifico: '',
+          fecha_alta: new Date().toLocaleString(),
+          fecha_modifico: new Date().toLocaleString(),
           fecha_tour: '',
           cupon: '',
-          observaciones: '',
+          observacion: '',
           cortesia: '',
           convertidor: '',
-          tipo_cliente: ''
+          clavere: this.usuario,
+          usuario: this.usuario,
+          usr_modi: this.usuario,
+          nacionalidad_reserva: ''
       },
       hotelList: [],
       tourList: [],
-      agenciaList: [],
+      agenciasList: [],
       sucursalList:[],
       vendedorList:[],
-      options: ['list', 'of', 'options']
+      options: []
+    }
+  },
+  computed: {
+    usuario() {
+      
+          let data_user = localStorage.getItem("data_user");
+          data_user = JSON.parse(data_user);
+          console.log('usuario', data_user.user.idusuario)
+          return data_user.user.idusuario; 
     }
   },
   watch: {
@@ -288,84 +309,96 @@ export default {
       this.email = val;
       this.emailConfirm = val;
     },
-  },
-  async created(){
-    if (this.id != undefined && (this.id + 0) > 0) {
-      if (!await this.getUser()) {
-        setTimeout(() => {
-          this.$router.push("/users");
-        }, 3000);
-      }
-      return;
+    hotel(newValue, beforeValue) {
+      this.form.hotel = newValue.clave
+    },
+    tour(newValue) {
+      this.form.precio_adulto = this.tour.precioadu;
+      this.form.precio_nino = this.tour.precionin;
+      this.form.tour = newValue.clave
+    },
+    agencia(newValue) {
+      this.form.agencia = newValue.clave
     }
-    this.status = 1;
-    this.newUser = this.id == undefined || this.user == "" || this.user == null;
   },
   methods: {
-    getUserForm() {
-      return {
-        email: this.email,
-        password: this.password,
-        status: +this.statusUser,
-        level: 1,
-        profile_id: this.profileId,
-        contact_id: this.contactId,
-        vendor_id: this.vendorId == 0 ? null : +this.vendorId,
-      };
+    editar() {
+      try {
+        ReservasResource.update(this.form, this.id);
+        this.$swal.fire({
+                icon: 'success',
+                title: 'Bien',
+                toast: true,
+                position: 'top',
+                timer: 3000,
+                showConfirmButton: false,
+                timerProgressBar: true,
+                text: 'Reserva Editada de forma correcta',
+            })
+      } catch (error) {
+        this.$swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              toast: true,
+              position: 'top',
+              timer: 3000,
+              showConfirmButton: false,
+              timerProgressBar: true,
+              text: 'Disculpe tuvimos un error',
+          })
+      }
     },
-    async getUser() {
-      var response = (await UserResource.getUser(this.id)).data;
-      if (!response.success) {
-        this.userErrors.push("Error al obtener usuario.");
-        return false;
+    createReserva() {
+      try {
+        ReservasResource.create(this.form);
+        this.$swal.fire({
+                icon: 'success',
+                title: 'Bien',
+                toast: true,
+                position: 'top',
+                timer: 3000,
+                showConfirmButton: false,
+                timerProgressBar: true,
+                text: 'Reserva guardado de forma correcta',
+            })
+        location.reload();
+      } catch (error) {
+        this.$swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              toast: true,
+              position: 'top',
+              timer: 3000,
+              showConfirmButton: false,
+              timerProgressBar: true,
+              text: 'Disculpe tuvimos un error',
+          })
       }
-      this.user = response.data;
-      if (this.user == "" || this.user == null) {
-        this.userErrors.push("Usuario no existe.");
-        return false;
-      }
-
-      this.email = this.user.email;
-      this.emailConfirm = this.user.email;
-      this.statusUser = this.user.status;
-
-      this.$emit('get-profileId', this.user.profile_id);
-      this.$emit('get-contactId', this.user.contact_id);
-      this.$emit('get-vendorId', this.user.vendor_id);
-
-      return true;
+      
     },
-    async saveUser(contactId, profileId) {
-      this.userErrors = [];
-      var response = null;
-
-      let formData = this.getUserForm();
-      if (formData.contact_id == null || formData.contact_id == 0){
-        formData.contact_id = contactId;
-      }
-      if (formData.profile_id == null || formData.profile_id == 0){
-        formData.profile_id = profileId;
-      }
-      if (this.newUser) {
-        response = await this.saveNewUser(formData);
-      } else {
-        response = await this.saveEditUser(formData);
-      }
-      if (!response.success) {
-        this.userErrors.push("Error al guardar el usuario.");
-      }
-      else{
-        this.successUserMessage = "Usuario guardado correctamente.";
-      }
-      return response;
+    selectHotel() {
+      this.hotel = this.hotelList.filter(hotel => {
+       if(hotel.clave === this.form.hotel) {
+         console.log('si entramos')
+          return hotel;
+        }
+      } )
+      this.form.hotel = this.hotel[0].clave
+      console.log(this.form.hotel)
+      console.log(this.hotel[0])
     },
-    async saveNewUser(formData) {
-      var response = (await UserResource.createUser(formData)).data;
-      return response;
+    async getHoteles() {
+      const {data} = await HotelesResource.get();
+      this.hotelList = data.data;
     },
-    async saveEditUser(formData) {
-      var response = (await UserResource.updateUser(this.id, formData)).data;
-      return response;
+    async getTours() {
+      const {data} = await ToursResource.get();
+      this.tourList = data.data;
+      console.log(data)
+    },
+    async getClientes() {
+      const {data} = await ClientesResource.get();
+      this.agenciasList = data.data;
     },
     isValidUserForm() {
       const errors = [];
@@ -381,6 +414,48 @@ export default {
       this.userErrors = errors;
       return errors;
     },
+    async getTour() {
+      let data = await ReservasResource.findReservas(this.id);
+      data = data.data.data.original.data[0];
+      this.form.hotel = data.hotel;
+      this.form.tour = data.tour;
+      this.form.precio_adulto = data.precioa;
+      this.form.precio_nino = data.preciob;
+      this.form.nombre = data.nombre;
+      this.form.pax = data.paxa+'.'+data.paxb;
+      this.form.cuarto = data.cuarto;
+      this.form.agencia = data.agencia;
+      this.form.sucursal = data.sucursal;
+      //this.form.fecha_alta = data.fechalta;
+      this.form.fecha_tour = data.fechatour;
+      this.form.cupon = data.cupon;
+      this.form.observacion = data.observacion;
+      this.form.cortesia = data.cortesia;
+      this.form.convertidor = data.convertidor;
+      this.form.usuario = data.usuario;
+      this.form.usr_modi = data.usr_modi;
+      this.form.nacionalidad_reserva = data.nacionalidad_reserva;
+      const dataTours = await ToursResource.find(data.tour);
+      const dataHoteles = await HotelesResource.find(data.hotel);
+      const dataAgencia = await ClientesResource.find(data.agencia);
+      this.agencia = dataAgencia.data.data[0];
+      this.tour = dataTours.data.data[0];
+      this.hotel = dataHoteles.data.data[0];
+      let dataFechaTour = data.fechatour.split(" ");
+      dataFechaTour = dataFechaTour[0] + 'T00:00:00.000-05:00';
+      this.form.fecha_tour = dataFechaTour;
+      console.log('SOY EL DATA HOTELES', dataFechaTour);
+    }
   },
+  async mounted() {
+    this.getHoteles();
+    this.getClientes();
+    this.getTours();
+    console.log('SI ESTANOS', this.id)
+    if (this.id) {
+      
+      this.getTour();
+    }
+  }
 }
 </script>

@@ -9,7 +9,7 @@ use Tymon\JWTAuth\Exception\TokenExpiredException;
 use Tymon\JWTAuth\Exception\TokenBlacklistedException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 use Tymon\JWTAuth\Exceptions\JWTException;
-use App\User;
+use App\Acceso;
 use Illuminate\Support\Facades\Storage;
 
 class AuthUserController extends Controller
@@ -21,15 +21,25 @@ class AuthUserController extends Controller
      */
     public function login(Request $request)
     {
+        /*$usuarios = Acceso::all();
+        foreach ($usuarios as $usuario) {
+            Acceso::where('idusuario', $usuario->idusuario)
+                    ->update(['password' => bcrypt($usuario->password)]);
+        }
+
+        dd('Bien');*/
         $credentials = $request->only('email','password');
         
         $validator = Validator::make($credentials, [
-            'email' => 'required|email',
+            'email' => 'required',
             'password' => 'required'
         ]);
 
+        //dd($credentials);
+        
         if($validator->fails())
         {
+           
             return response()->json([
                 'succes' => false,
                 'message' => 'Error en la validacion',
@@ -40,14 +50,9 @@ class AuthUserController extends Controller
         $token = JWTAuth::attempt($credentials);
         
         if($token) {
-            User::where('email', $credentials['email'])
-            ->update(['remember_token' => $token]);
-            $user = User::where('email', $credentials['email'])->get()->first();
+            $user = Acceso::where('email', $credentials['email'])->get()->first();
             $user->profile = $user->profile;
 
-            if ($user->profile->image){
-                $user->profile->image = Storage::disk('images-profile')->url($user->profile->image);
-            }
             return response()->json([
                 'succes' => true,
                 'token' => $token,

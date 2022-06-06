@@ -16,10 +16,10 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    /*public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['login']]);
-    }
+    }*/
 
     /**
      * Get a JWT via given credentials.
@@ -28,10 +28,11 @@ class AuthController extends Controller
      */
     public function logiin(Request $request)
     {
-        $credentials = $request->only('email','password');
+        dd('Hola');
+        /*$credentials = $request->only('email','password');
         
         $validator = Validator::make($credentials, [
-            'email' => 'required|email',
+            'email' => 'required',
             'password' => 'required'
         ]);
 
@@ -50,7 +51,7 @@ class AuthController extends Controller
             return response()->json([
                 'succes' => true,
                 'token' => $token,
-                'user' => User::where('email', $credentials['email'])->get()->first()
+                'user' => User::where('idusuario', $credentials['email'])->get()->first()
             ], 200);
         } else {
             return response()->json([
@@ -58,7 +59,7 @@ class AuthController extends Controller
                 'message' => 'Error en la validacion',
                 'errors' => $validator->errors()
             ], 401);
-        }
+        }*/
 
         /*return $this->respondWithToken($token); */
     }

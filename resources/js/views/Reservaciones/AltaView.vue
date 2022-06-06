@@ -2,7 +2,7 @@
   <!-- Main content -->
   <div>
     <titulo-component title="Reservaciones" :breadcrumbs="breadcrumb"></titulo-component>
-    <form-alta-component></form-alta-component>
+    <form-alta-component :id="id"></form-alta-component>
   </div>
 </template>
 
@@ -14,6 +14,11 @@ export default {
   components: {
     tituloComponent,
     formAltaComponent,
+  },
+  props: {
+    id: {
+      default: 0
+    }
   },
   data(){
     return {

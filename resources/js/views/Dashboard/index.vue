@@ -277,15 +277,20 @@
                     </a>
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
-                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                         <router-link class="nav-link" 
+                            :to="{ path:'/reservaciones/alta'}">
                           <i class="far fa-circle nav-icon"></i>
                           <p>Reservacion</p>
-                        </a>
+                        </router-link>
                       </li>
                       <li class="nav-item">
-                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                        <router-link class="nav-link" 
+                            :to="{ path:'/reservaciones/lista'}">
                           <i class="far fa-circle nav-icon"></i>
                           <p>Busqueda reservación</p>
+                        </router-link>
+                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                          
                         </a>
                       </li>
                       <li class="nav-item">
@@ -312,10 +317,11 @@
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                        <router-link class="nav-link" 
+                            :to="{ name:'ReportesCorridas'}">
                           <i class="far fa-circle nav-icon"></i>
                           <p>Corridas</p>
-                        </a>
+                        </router-link>
                       </li>
                       <li class="nav-item">
                         <a href="pages/mailbox/mailbox.html" class="nav-link">
