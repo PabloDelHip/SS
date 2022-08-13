@@ -52,6 +52,9 @@ import ReservacionesLista from './views/Reservaciones/ListaView.vue'
 //Reportes
 import Corridas from './views/Reportes/Corridas/index.vue'
 
+//Reportes
+import ListHotels from './views/Hotels/listHotelsView.vue'
+
 export default new Router({
     linkExactActiveClass: "active",
     routes: [{
@@ -236,6 +239,19 @@ export default new Router({
                     path: "history/:id_case",
                     name: "caseHistory",
                     component: CasesHistory,
+                    props: true
+                }
+            ]
+        },
+        {
+            path: "/hotels",
+            name: "hotels",
+            component: Index,
+            children:[
+                {
+                    path: "list",
+                    name: "hotels.list",
+                    component: ListHotels,
                     props: true
                 }
             ]

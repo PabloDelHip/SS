@@ -5,7 +5,7 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>{{title}}</h1>
-            <button :disabled="invalid" type="submit" class="btn btn-info btn-sm mt-2">
+            <button type="submit" class="btn btn-info btn-sm mt-2">
                 <i class="fas fa-arrow-left"></i>
                 Volver
             </button>
@@ -21,7 +21,7 @@
             </ol>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
 </template>
 
@@ -30,8 +30,12 @@ export default {
     props: {
         title: {
             required: true,
+            default: ''
         },
-        breadcrumbs:[]
+        breadcrumbs: {
+          type: Array,
+          default: () => []
+        }
     },
     mounted() {
         this.breadcrumbs.unshift({

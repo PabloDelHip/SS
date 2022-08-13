@@ -38,6 +38,9 @@ Route::get('/users/edit/{id}', ['as' => '/users/edit', 'uses' => 'HomeController
 // Profile
 Route::get('/users/profile/{id?}', ['as' => 'perfilUsuario', 'uses' => 'HomeController@index']);
 
+// Hotels
+Route::get('/hotels/list', ['as' => 'hotelsList', 'uses' => 'HomeController@index']);
+
 // Permissions
 Route::get('users/permissions/{id}', ['as' => '/users/permissions', 'uses' => 'HomeController@index']);
 

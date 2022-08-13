@@ -198,6 +198,9 @@ Route::group([
     'middleware' => ['jwt.auth'],
     'prefix' => 'v1/hotels'
 ], function () {
+    Route::post('/create', 'HotelsController@create');
+    Route::put('/update/{clave}', 'HotelsController@update');
+    Route::delete('/delete/{clave}', 'HotelsController@delete');
     Route::get('/get', 'HotelsController@get');
     Route::get('/find/{clave}', 'HotelsController@find');
 });

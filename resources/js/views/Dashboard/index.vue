@@ -189,10 +189,11 @@
                     </a>
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
-                        <a href="pages/mailbox/mailbox.html" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
+                        <router-link class="nav-link" 
+                            :to="{ path:'/hotels/list'}">
+                          <i class="fas fa-hotel"></i>
                           <p>Hoteles</p>
-                        </a>
+                        </router-link>
                       </li>
                       <li class="nav-item">
                         <a href="pages/mailbox/mailbox.html" class="nav-link">
