@@ -205,6 +205,18 @@ Route::group([
     Route::get('/find/{clave}', 'HotelsController@find');
 });
 
+// Guias
+Route::group([
+    'middleware' => ['jwt.auth'],
+    'prefix' => 'v1/guias'
+], function () {
+    Route::post('/create', 'GuiasController@create');
+    Route::put('/update/{clave}', 'GuiasController@update');
+    Route::delete('/delete/{clave}', 'GuiasController@delete');
+    Route::get('/get', 'GuiasController@get');
+    Route::get('/find/{clave}', 'GuiasController@find');
+});
+
 // Tours
 Route::group([
     'middleware' => ['jwt.auth'],
