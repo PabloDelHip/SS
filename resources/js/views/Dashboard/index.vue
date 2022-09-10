@@ -196,6 +196,13 @@
                         </router-link>
                       </li>
                       <li class="nav-item">
+                        <router-link class="nav-link" 
+                            :to="{ path:'/clients/list'}">
+                          <i class="fas fa-user"></i>
+                          <p>Clientes</p>
+                        </router-link>
+                      </li>
+                      <li class="nav-item">
                         <a href="pages/mailbox/mailbox.html" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>Guías</p>

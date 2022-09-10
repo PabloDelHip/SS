@@ -193,6 +193,19 @@ Route::group([
     Route::delete('/delete/{id}', 'VendorsController@delete');
 });
 
+// Clients_tours
+Route::group([
+    'middleware' => ['jwt.auth'],
+    'prefix' => 'v1/clients_tours'
+], function () {
+    Route::post('/create', 'Client_ToursController@create');
+    Route::put('/update/{clave}', 'Client_ToursController@update');
+    Route::delete('/delete/{clave}', 'Client_ToursController@delete');
+    Route::get('/get', 'Client_ToursController@get');
+    Route::get('/tours/{clave}', 'Client_ToursController@getTours');
+    Route::get('/find/{clave}', 'Client_ToursController@find');
+});
+
 // Hoteles
 Route::group([
     'middleware' => ['jwt.auth'],
@@ -231,6 +244,8 @@ Route::group([
     'middleware' => ['jwt.auth'],
     'prefix' => 'v1/clientes'
 ], function () {
+    Route::post('/create', 'ClientesController@create');
+    Route::post('/update', 'ClientesController@update');
     Route::get('/get', 'ClientesController@get');
     Route::get('/find/{clave}', 'ClientesController@find');
 });

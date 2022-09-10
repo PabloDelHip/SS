@@ -67,3 +67,6 @@ Route::get('/cases/history/{id_case}', ['as' => 'vendors', 'uses' => 'HomeContro
 
 //Dashboard
 Route::get('/overview', ['as' => '/overview', 'uses' => 'HomeController@index']);
+//Clientes
+Route::get('/clients/list', ['as' => '/overview', 'uses' => 'HomeController@index']);
+Route::get('/clients/tours/{id}', ['as' => '/tours', 'uses' => 'HomeController@index']);

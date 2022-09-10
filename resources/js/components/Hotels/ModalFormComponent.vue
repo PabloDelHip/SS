@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{ idHotel }}
     <modal
       name="add-hotel"
       :width="'50%'"

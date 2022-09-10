@@ -5,10 +5,11 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>{{title}}</h1>
-            <button type="submit" class="btn btn-info btn-sm mt-2">
-                <i class="fas fa-arrow-left"></i>
-                Volver
-            </button>
+            <router-link class="btn btn-info btn-sm mt-2" 
+                :to="{ path: url}">
+              <i class="fas fa-arrow-left"></i>
+              <p>Volver</p>
+            </router-link>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -28,14 +29,18 @@
 <script>
 export default {
     props: {
-        title: {
-            required: true,
-            default: ''
-        },
-        breadcrumbs: {
-          type: Array,
-          default: () => []
-        }
+      title: {
+          required: true,
+          default: ''
+      },
+      breadcrumbs: {
+        type: Array,
+        default: () => []
+      },
+      url: {
+        type: String,
+        default: '/'
+      },
     },
     mounted() {
         this.breadcrumbs.unshift({

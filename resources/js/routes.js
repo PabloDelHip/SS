@@ -52,8 +52,13 @@ import ReservacionesLista from './views/Reservaciones/ListaView.vue'
 //Reportes
 import Corridas from './views/Reportes/Corridas/index.vue'
 
-//Reportes
+//Hoteles
 import ListHotels from './views/Hotels/listHotelsView.vue'
+
+//Clientes
+import ListClientes from './views/Clientes/ListClientesView.vue'
+import ClientesTours from './views/Clientes/ToursView.vue'
+
 
 export default new Router({
     linkExactActiveClass: "active",
@@ -252,6 +257,25 @@ export default new Router({
                     path: "list",
                     name: "hotels.list",
                     component: ListHotels,
+                    props: true
+                }
+            ]
+        },
+        {
+            path: "/clients",
+            name: "clients",
+            component: Index,
+            children:[
+                {
+                    path: "list",
+                    name: "clients.list",
+                    component: ListClientes,
+                    props: true
+                },
+                {
+                    path: "tours/:id",
+                    name: "clients.tours",
+                    component: ClientesTours,
                     props: true
                 }
             ]
