@@ -59,6 +59,8 @@ import ListHotels from './views/Hotels/listHotelsView.vue'
 import ListClientes from './views/Clientes/ListClientesView.vue'
 import ClientesTours from './views/Clientes/ToursView.vue'
 
+//Gastos
+import ListBills from './views/Bills/ListBillsView.vue'
 
 export default new Router({
     linkExactActiveClass: "active",
@@ -276,6 +278,12 @@ export default new Router({
                     path: "tours/:id",
                     name: "clients.tours",
                     component: ClientesTours,
+                    props: true,
+                },
+                {
+                    path: "bills/:id",
+                    name: "clients.tours.bills",
+                    component: ListBills,
                     props: true
                 }
             ]

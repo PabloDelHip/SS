@@ -33,6 +33,12 @@ class ClientsToursRepository extends ApiController {
       ->get();
   }
 
+  public function findIdTourIdClient($claveTour, $claveCliente) {
+    return Client_Tour::where("clave_tour", $claveTour)
+      ->where("clave_cliente", $claveCliente)
+      ->get();
+  }
+
   public function update(array $data, $clave) {
     return Client_Tour::where('clave', $clave)
          ->update($data);

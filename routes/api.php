@@ -206,6 +206,19 @@ Route::group([
     Route::get('/find/{clave}', 'Client_ToursController@find');
 });
 
+// Gastos
+Route::group([
+    'middleware' => ['jwt.auth'],
+    'prefix' => 'v1/gastos'
+], function () {
+    Route::post('/create', 'GastosController@create');
+    Route::put('/update/{clave}', 'GastosController@update');
+    Route::delete('/delete/{clave}', 'GastosController@delete');
+    Route::get('/get', 'GastosController@get');
+    Route::get('/get/by-clave-clientes-tours/{clave_clientes_tours}', 'GastosController@getByClaveClientesTours');
+    Route::get('/find/{clave}', 'GastosController@find');
+});
+
 // Hoteles
 Route::group([
     'middleware' => ['jwt.auth'],

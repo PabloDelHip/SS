@@ -44,6 +44,9 @@ Route::get('/hotels/list', ['as' => 'hotelsList', 'uses' => 'HomeController@inde
 // Permissions
 Route::get('users/permissions/{id}', ['as' => '/users/permissions', 'uses' => 'HomeController@index']);
 
+// Bills
+Route::get('clients/bills/{id}', ['as' => '/users/permissions', 'uses' => 'HomeController@index']);
+
 //Dashboard
 Route::get('/error', ['as' => '/error', 'uses' => 'HomeController@index']);
 Route::get('/error/notfound', ['as' => '/error/notfound', 'uses' => 'HomeController@index']);

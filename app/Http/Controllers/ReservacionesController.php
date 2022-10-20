@@ -5,21 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\ReservacionesRepository;
 use App\Repositories\ToursRepository;
+use App\Repositories\ClientsToursRepository;
 use App\Http\Controllers\ApiController;
 
 class ReservacionesController extends ApiController
 {
     private $repository;
+    private $clientTourRepository;
 
-    public function __construct(ReservacionesRepository $repository, ToursRepository $toursRepository)
+    public function __construct(ReservacionesRepository $repository,
+        ToursRepository $toursRepository,
+        ClientsToursRepository $clientTourRepository)
     {
         $this->repository = $repository;
         $this->toursRepository = $toursRepository;
+        $this->clientTourRepository = $clientTourRepository;
     }
 
     public function store(Request $request) {
         //dd($request->all());
-        
+        $totalTourCliente = $this->clientTourRepository->findIdTourIdClient($request->tour, $request->agencia);
         $toursData = $this->toursRepository->getId($request->tour);
         $pax = explode(".", $request->pax);
         $fecha_hora_alta = explode(" ", $request->fecha_alta);
@@ -69,6 +74,7 @@ class ReservacionesController extends ApiController
         $reserva["nacionalidad_reserva"] = $request->nacionalidad_reserva;
         $reserva["horaalta"] = "1900-01-01 09:44:21.000";
         $reserva["horamod"] = "1900-01-01 09:44:21.000";
+        $reservas["precio_tour"] = $totalTourCliente[0]['precio'];
         $response =  $this->repository->store($reserva);
         return $this->showAll($response);
     }

@@ -361,7 +361,7 @@ export default {
                 timerProgressBar: true,
                 text: 'Reserva guardado de forma correcta',
             })
-        location.reload();
+        //location.reload();
       } catch (error) {
         this.$swal.fire({
               icon: 'error',

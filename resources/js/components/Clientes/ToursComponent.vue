@@ -33,6 +33,16 @@
                   <button @click="deleteTour(tour.clave)" class="btn btn-danger btn-sm">
                     <i class="fas fa-trash"></i>
                   </button>
+                  <router-link
+                    :to="{
+                      name: 'clients.tours.bills',
+                      params: { id: tour.clave }
+                    }"
+                    name="created"
+                    class="btn btn-success btn-sm"
+                  >
+                    <i class="fas fa-dollar-sign"></i>
+                  </router-link>
                 </th>
               </tr>
             </tbody>
