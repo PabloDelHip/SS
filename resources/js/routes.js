@@ -60,7 +60,10 @@ import ListClientes from './views/Clientes/ListClientesView.vue'
 import ClientesTours from './views/Clientes/ToursView.vue'
 
 //Gastos
-import ListBills from './views/Bills/ListBillsView.vue'
+import ListBills from './views/Bills/ListBillsView.vue';
+
+//Tours
+import ListTours from './views/Tours/ListView.vue';
 
 export default new Router({
     linkExactActiveClass: "active",
@@ -264,6 +267,25 @@ export default new Router({
             ]
         },
         {
+            path: "/tours",
+            name: "tours",
+            component: Index,
+            children:[
+                {
+                    path: "list",
+                    name: "tours.list",
+                    component: ListTours,
+                    props: true
+                },
+                {
+                    path: "bills/:id",
+                    name: "tours.bills",
+                    component: ListBills,
+                    props: true
+                }
+            ]
+        },
+        {
             path: "/clients",
             name: "clients",
             component: Index,
@@ -280,12 +302,6 @@ export default new Router({
                     component: ClientesTours,
                     props: true,
                 },
-                {
-                    path: "bills/:id",
-                    name: "clients.tours.bills",
-                    component: ListBills,
-                    props: true
-                }
             ]
         },
         /*{

@@ -76,7 +76,7 @@ export default {
     },
     async AddBillInTour() {
       const params = {
-        clave_clientes_tours: this.clave_clientes_tours,
+        clave_tour: this.clave_clientes_tours,
         ...this.form,
       }
       if (this.idGasto) {

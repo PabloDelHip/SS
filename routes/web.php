@@ -45,7 +45,7 @@ Route::get('/hotels/list', ['as' => 'hotelsList', 'uses' => 'HomeController@inde
 Route::get('users/permissions/{id}', ['as' => '/users/permissions', 'uses' => 'HomeController@index']);
 
 // Bills
-Route::get('clients/bills/{id}', ['as' => '/users/permissions', 'uses' => 'HomeController@index']);
+Route::get('tours/bills/{id}', ['as' => '/users/permissions', 'uses' => 'HomeController@index']);
 
 //Dashboard
 Route::get('/error', ['as' => '/error', 'uses' => 'HomeController@index']);
@@ -73,3 +73,6 @@ Route::get('/overview', ['as' => '/overview', 'uses' => 'HomeController@index'])
 //Clientes
 Route::get('/clients/list', ['as' => '/overview', 'uses' => 'HomeController@index']);
 Route::get('/clients/tours/{id}', ['as' => '/tours', 'uses' => 'HomeController@index']);
+
+//Tours
+Route::get('/tours/list', ['as' => '/overview', 'uses' => 'HomeController@index']);

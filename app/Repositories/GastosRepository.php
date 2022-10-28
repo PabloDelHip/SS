@@ -32,7 +32,7 @@ class GastosRepository extends ApiController {
   }
 
   public function getByClaveClientesTours($clave_clientes_tours) {
-    return Gastos::where('clave_clientes_tours', $clave_clientes_tours)
+    return Gastos::where('clave_tour', $clave_clientes_tours)
       ->where('status', 1)
       ->get();
   }

@@ -12,10 +12,10 @@ class Gastos extends Model
     protected $fillable = [
         'nombre',
         'gasto',
-        'clave_clientes_tours',
+        'clave_tour',
     ];
 
     public function clientesTours() {
-        return $this->belongsTo(Clientes_Tours::class, 'clave_clientes_tours');
+        return $this->belongsTo(Tours::class, 'clave_tour');
     }
 }

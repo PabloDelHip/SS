@@ -26,7 +26,7 @@ class GastosRequest extends FormRequest
         return [
             'nombre' => 'required|max:250',
             'gasto' => 'required|numeric',
-            'clave_clientes_tours' => 'required|numeric',
+            'clave_tour' => 'required|numeric',
         ];
     }
 }

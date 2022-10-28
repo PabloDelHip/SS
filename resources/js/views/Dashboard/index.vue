@@ -203,6 +203,13 @@
                         </router-link>
                       </li>
                       <li class="nav-item">
+                        <router-link class="nav-link" 
+                            :to="{ path:'/tours/list'}">
+                          <i class="fas fa-umbrella-beach"></i>
+                          <p>Tours</p>
+                        </router-link>
+                      </li>
+                      <li class="nav-item">
                         <a href="pages/mailbox/mailbox.html" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>Guías</p>
@@ -230,12 +237,6 @@
                         <a href="pages/mailbox/mailbox.html" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>Agencias</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="pages/mailbox/mailbox.html" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Tours</p>
                         </a>
                       </li>
                       <li class="nav-item">
